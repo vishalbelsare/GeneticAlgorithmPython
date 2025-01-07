@@ -1,10 +1,12 @@
 # PyGAD:  Genetic Algorithm in Python
 
-[PyGAD](https://pypi.org/project/pygad) is an open-source easy-to-use Python 3 library for building the genetic algorithm and optimizing machine learning algorithms. It supports Keras and PyTorch.
+[PyGAD](https://pypi.org/project/pygad) is an open-source easy-to-use Python 3 library for building the genetic algorithm and optimizing machine learning algorithms. It supports Keras and PyTorch. PyGAD supports optimizing both single-objective and multi-objective problems.
 
 Check documentation of the [PyGAD](https://pygad.readthedocs.io/en/latest).
 
-[![Downloads](https://pepy.tech/badge/pygad)](https://pepy.tech/project/pygad) ![Docs](https://readthedocs.org/projects/pygad/badge)
+[![PyPI Downloads](https://pepy.tech/badge/pygad)](https://pepy.tech/project/pygad) [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pygad.svg?label=Conda%20Downloads)](
+https://anaconda.org/conda-forge/PyGAD) [![PyPI version](https://badge.fury.io/py/pygad.svg)](https://badge.fury.io/py/pygad) ![Docs](https://readthedocs.org/projects/pygad/badge) [![PyGAD PyTest / Python 3.11](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py311.yml/badge.svg)](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py311.yml) [![PyGAD PyTest / Python 3.10](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py310.yml/badge.svg)](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py310.yml) [![PyGAD PyTest / Python 3.9](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py39.yml/badge.svg)](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py39.yml) [![PyGAD PyTest / Python 3.8](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py38.yml/badge.svg)](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py38.yml) [![PyGAD PyTest / Python 3.7](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py37.yml/badge.svg)](https://github.com/ahmedfgad/GeneticAlgorithmPython/actions/workflows/main_py37.yml) [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![Translation](https://hosted.weblate.org/widgets/weblate/-/svg-badge.svg)](https://hosted.weblate.org/engage/weblate/) [![REUSE](https://api.reuse.software/badge/github.com/WeblateOrg/weblate)](https://api.reuse.software/info/github.com/WeblateOrg/weblate) [![Stack Overflow](https://img.shields.io/badge/stackoverflow-Ask%20questions-blue.svg)](
+https://stackoverflow.com/questions/tagged/pygad) [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/ahmedfgad/GeneticAlgorithmPython/badge)](https://securityscorecards.dev/viewer/?uri=github.com/ahmedfgad/GeneticAlgorithmPython) [![DOI](https://zenodo.org/badge/DOI/10.1007/s11042-023-17167-y.svg)](https://doi.org/10.1007/s11042-023-17167-y)
 
 ![PYGAD-LOGO](https://user-images.githubusercontent.com/16560492/101267295-c74c0180-375f-11eb-9ad0-f8e37bd796ce.png)
 
@@ -21,7 +23,7 @@ The library is under active development and more features are added regularly. I
 
 # Installation
 
-To install [PyGAD](https://pypi.org/project/pygad), simply use pip to download and install the library from [PyPI](https://pypi.org/project/pygad) (Python Package Index). The library lives a PyPI at this page https://pypi.org/project/pygad.
+To install [PyGAD](https://pypi.org/project/pygad), simply use pip to download and install the library from [PyPI](https://pypi.org/project/pygad) (Python Package Index). The library is at PyPI at this page https://pypi.org/project/pygad.
 
 Install PyGAD with the following command:
 
@@ -29,7 +31,7 @@ Install PyGAD with the following command:
 pip install pygad
 ```
 
-To get started with PyGAD, please read the documentation at [Read The Docs](https://pygad.readthedocs.io) https://pygad.readthedocs.io.
+To get started with PyGAD, please read the documentation at [Read The Docs](https://pygad.readthedocs.io/) https://pygad.readthedocs.io.
 
 # PyGAD Source Code
 
@@ -146,7 +148,7 @@ on_stop()
 
 # Example
 
-Check the [PyGAD's documentation](https://pygad.readthedocs.io/en/latest/README_pygad_ReadTheDocs.html) for information about the implementation of this example.
+Check the [PyGAD's documentation](https://pygad.readthedocs.io/en/latest/pygad.html) for information about the implementation of this example. It solves a single-objective problem.
 
 ```python
 import pygad
@@ -183,9 +185,9 @@ num_genes = len(function_inputs)
 last_fitness = 0
 def callback_generation(ga_instance):
     global last_fitness
-    print("Generation = {generation}".format(generation=ga_instance.generations_completed))
-    print("Fitness    = {fitness}".format(fitness=ga_instance.best_solution()[1]))
-    print("Change     = {change}".format(change=ga_instance.best_solution()[1] - last_fitness))
+    print(f"Generation = {ga_instance.generations_completed}")
+    print(f"Fitness    = {ga_instance.best_solution()[1]}")
+    print(f"Change     = {ga_instance.best_solution()[1] - last_fitness}")
     last_fitness = ga_instance.best_solution()[1]
 
 # Creating an instance of the GA class inside the ga module. Some parameters are initialized within the constructor.
@@ -204,15 +206,15 @@ ga_instance.plot_fitness()
 
 # Returning the details of the best solution.
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
-print("Parameters of the best solution : {solution}".format(solution=solution))
-print("Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
-print("Index of the best solution : {solution_idx}".format(solution_idx=solution_idx))
+print(f"Parameters of the best solution : {solution}")
+print(f"Fitness value of the best solution = {solution_fitness}")
+print(f"Index of the best solution : {solution_idx}")
 
 prediction = numpy.sum(numpy.array(function_inputs)*solution)
-print("Predicted output based on the best solution : {prediction}".format(prediction=prediction))
+print(f"Predicted output based on the best solution : {prediction}")
 
 if ga_instance.best_solution_generation != -1:
-    print("Best fitness value reached after {best_solution_generation} generations.".format(best_solution_generation=ga_instance.best_solution_generation))
+    print(f"Best fitness value reached after {ga_instance.best_solution_generation} generations.")
 
 # Saving the GA instance.
 filename = 'genetic' # The filename to which the instance is saved. The name is without extension.
@@ -311,13 +313,13 @@ Find the book at these links:
 If you used PyGAD, please consider adding a citation to the following paper about PyGAD:
 
 ```
-@misc{gad2021pygad,
-      title={PyGAD: An Intuitive Genetic Algorithm Python Library}, 
-      author={Ahmed Fawzy Gad},
-      year={2021},
-      eprint={2106.06158},
-      archivePrefix={arXiv},
-      primaryClass={cs.NE}
+@article{gad2023pygad,
+  title={Pygad: An intuitive genetic algorithm python library},
+  author={Gad, Ahmed Fawzy},
+  journal={Multimedia Tools and Applications},
+  pages={1--14},
+  year={2023},
+  publisher={Springer}
 }
 ```
 
